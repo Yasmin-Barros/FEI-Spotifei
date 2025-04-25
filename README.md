@@ -14,8 +14,8 @@ git commit -m "Adicionando o README.md"
 
 git remote add origin https://github.com/Yasmin-Barros/FEI-Spotifei.git
 
-##Para enviar os commits locais para o repositório remoto use o comando:
+### Para enviar os commits locais para o repositório remoto use o comando:
 git push -u origin main
 
-##Obtendo os arquivos do repositório remoto:
+### Obtendo os arquivos do repositório remoto:
 git pull origin main
