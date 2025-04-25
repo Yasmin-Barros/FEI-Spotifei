@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class Conexao {
     public Connection getConnection() throws SQLException{
         Connection conexao = DriverManager.getConnection(
-                "jdbc:postresql://localhost5432/spotifeiDB","postgres","123321");
+                "jdbc:postgresql://localhost:5432/spotifeiDB","postgres","123321");
         return conexao;
     }
 }
