@@ -3,10 +3,13 @@
 No GIT:
 
 git init
+
 git config --global user.name "Seu nome"
+
 git config --global user.email "seu@email.com"
 
 git add .
+
 git commit -m "Adicionando o README.md"
 
 git remote add origin https://github.com/Yasmin-Barros/FEI-Spotifei.git
