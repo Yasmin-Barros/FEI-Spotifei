@@ -22,13 +22,14 @@ public class UsuarioDAO {
     }
     
     public void cadastrar(Usuario usuario) throws SQLException {
-    String sql = "INSERT INTO \"tabelaUsuarios\"(nome, usuario, senha) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO \"tabelaUsuarios\"(idUsuario,nome, usuario, senha) VALUES (?, ?, ?)";
     
     try (PreparedStatement statement = conn.prepareStatement(sql)) {
         // Definindo os parâmetros
-        statement.setString(1, usuario.getNome());
-        statement.setString(2, usuario.getUsuario());
-        statement.setString(3, usuario.getSenha());
+        statement.setString(1, usuario.getIdUsuario());
+        statement.setString(2, usuario.getNome());
+        statement.setString(3, usuario.getUsuario());
+        statement.setString(4, usuario.getSenha());
         
         // Executando a inserção
         statement.executeUpdate();  // Usamos executeUpdate para inserções
