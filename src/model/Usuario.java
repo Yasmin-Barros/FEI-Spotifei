@@ -9,22 +9,12 @@ package model;
  * @author unifybarros
  */
 public class Usuario extends Pessoa implements IAutenticacao{
-    int id;
-    String nome, usuario, senha;
+    String nome, user, senha;
 
-    public Usuario(int id, String nome, String usuario, String senha) {
-        this.id = id;
+    public Usuario(String nome, String user, String senha) {
         this.nome = nome;
-        this.usuario = usuario;
+        this.user = user;
         this.senha = senha;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -35,12 +25,12 @@ public class Usuario extends Pessoa implements IAutenticacao{
         this.nome = nome;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUser() {
+        return user;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getSenha() {

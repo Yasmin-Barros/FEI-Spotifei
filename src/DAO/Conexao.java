@@ -17,4 +17,8 @@ public class Conexao {
                 "jdbc:postgresql://localhost:5432/spotifeiDB","postgres","123321");
         return conexao;
     }
+
+    public void rollback() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -26,9 +26,8 @@ public class UsuarioDAO {
     
     try (PreparedStatement statement = conn.prepareStatement(sql)) {
         // Definindo os parâmetros
-        statement.setString(1, usuario.getIdUsuario());
         statement.setString(2, usuario.getNome());
-        statement.setString(3, usuario.getUsuario());
+        statement.setString(3, usuario.getUser());
         statement.setString(4, usuario.getSenha());
         
         // Executando a inserção

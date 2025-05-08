@@ -19,7 +19,7 @@ public class CadastroGUI extends javax.swing.JFrame {
      */
     public CadastroGUI() {
         initComponents();
-        getContentPane().setBackground(new Color(13,13,13)); 
+        getContentPane().setBackground(new Color(12,12,12)); 
         jButton1.setBackground(new Color(30, 215, 96));
         
 
@@ -47,7 +47,7 @@ public class CadastroGUI extends javax.swing.JFrame {
         MenuLogin = new javax.swing.JMenu();
         menuItemExibir4 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(18, 18, 18));
 
         CaixaUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -261,19 +261,7 @@ public class CadastroGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuBar jMenuBar3;
-    private javax.swing.JMenuBar jMenuBar4;
-    private javax.swing.JMenuBar jMenuBar5;
     private javax.swing.JMenuBar jMenuBar6;
-    private javax.swing.JMenuItem menuItemExibir;
-    private javax.swing.JMenuItem menuItemExibir1;
-    private javax.swing.JMenuItem menuItemExibir2;
-    private javax.swing.JMenuItem menuItemExibir3;
     private javax.swing.JMenuItem menuItemExibir4;
     // End of variables declaration//GEN-END:variables
 }

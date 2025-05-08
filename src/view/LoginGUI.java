@@ -24,7 +24,7 @@ public class LoginGUI extends javax.swing.JFrame {
      */
     public LoginGUI() {
         initComponents();
-        getContentPane().setBackground(new Color(13,13,13)); 
+        getContentPane().setBackground(new Color(12,12,12)); 
         
     }
 
@@ -38,27 +38,21 @@ public class LoginGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         CaixaUsuarioLogin = new javax.swing.JTextField();
-        CaixaSenhaLogin = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        CaixaSenhaLogin = new javax.swing.JPasswordField();
         jMenuBar6 = new javax.swing.JMenuBar();
         MenuLogin = new javax.swing.JMenu();
         menuItemExibir4 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         CaixaUsuarioLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CaixaUsuarioLoginActionPerformed(evt);
-            }
-        });
-
-        CaixaSenhaLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CaixaSenhaLoginActionPerformed(evt);
             }
         });
 
@@ -86,6 +80,13 @@ public class LoginGUI extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("LOGIN");
 
+        CaixaSenhaLogin.setText("jPasswordField1");
+        CaixaSenhaLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CaixaSenhaLoginActionPerformed(evt);
+            }
+        });
+
         MenuLogin.setText("Não tem conta?");
 
         menuItemExibir4.setText("Cadastrar");
@@ -108,24 +109,27 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(228, 228, 228)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addGap(141, 141, 141))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(CaixaUsuarioLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(26, 26, 26)
-                            .addComponent(CaixaSenhaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)
-                        .addGap(125, 125, 125)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(403, 403, 403)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(141, 141, 141))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(26, 26, 26)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CaixaUsuarioLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                                    .addComponent(CaixaSenhaLogin))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -154,25 +158,22 @@ public class LoginGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CaixaUsuarioLoginActionPerformed
 
-    private void CaixaSenhaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaSenhaLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CaixaSenhaLoginActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ControllerLogin controller = new ControllerLogin(this);
         controller.procurarUsuario();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void menuItemExibir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExibir4ActionPerformed
         new CadastroGUI().setVisible(true);
     }//GEN-LAST:event_menuItemExibir4ActionPerformed
 
+    private void CaixaSenhaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaSenhaLoginActionPerformed
+        this.CaixaSenhaLogin = CaixaSenhaLogin;
+    }//GEN-LAST:event_CaixaSenhaLoginActionPerformed
+
     public JTextField getCaixaSenhaLogin() {
         return CaixaSenhaLogin;
-    }
-
-    public void setCaixaSenhaLogin(JTextField CaixaSenhaLogin) {
-        this.CaixaSenhaLogin = CaixaSenhaLogin;
     }
 
     public JTextField getCaixaUsuarioLogin() {
@@ -283,7 +284,7 @@ public class LoginGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CaixaSenhaLogin;
+    private javax.swing.JPasswordField CaixaSenhaLogin;
     private javax.swing.JTextField CaixaUsuarioLogin;
     private javax.swing.JMenu MenuLogin;
     private javax.swing.JButton jButton1;
