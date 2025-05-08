@@ -12,13 +12,21 @@ import java.sql.SQLException;
  * @author unifybarros
  */
 public class Conexao {
-    public Connection getConnection() throws SQLException{
-        Connection conexao = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/spotifeiDB","postgres","123321");
+    private Connection conexao;
+
+    public Connection getConnection() throws SQLException {
+        if (conexao == null || conexao.isClosed()) {
+            conexao = DriverManager.getConnection(
+                "jdbc:postgresql://localhost:5432/spotifeiDB", "postgres", "fei"
+                //"jdbc:postgresql://localhost:5432/postgres", "postgres", "fei"
+            );
+        }
         return conexao;
     }
 
-    public void rollback() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void rollback() throws SQLException {
+        if (conexao != null && !conexao.getAutoCommit()) {
+            conexao.rollback();
+        }
     }
 }

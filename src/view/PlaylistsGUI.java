@@ -26,41 +26,56 @@ public class PlaylistsGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        BotaoNovaPlaylist = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        BotaoApagarPlaylist = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Nova Playlist");
+        BotaoNovaPlaylist.setText("Nova Playlist");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/By Yasmin Barros (3) (2).png"))); // NOI18N
         jLabel2.setText("jLabel1");
+
+        BotaoApagarPlaylist.setText("Apagar Playlist");
+        BotaoApagarPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoApagarPlaylistActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(85, 85, 85)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(85, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(BotaoNovaPlaylist)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotaoApagarPlaylist)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotaoNovaPlaylist)
+                    .addComponent(BotaoApagarPlaylist))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotaoApagarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoApagarPlaylistActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotaoApagarPlaylistActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,7 +114,8 @@ public class PlaylistsGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BotaoApagarPlaylist;
+    private javax.swing.JButton BotaoNovaPlaylist;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

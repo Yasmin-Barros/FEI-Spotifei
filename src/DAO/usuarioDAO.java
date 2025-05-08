@@ -22,22 +22,18 @@ public class UsuarioDAO {
     }
     
     public void cadastrar(Usuario usuario) throws SQLException {
-    String sql = "INSERT INTO \"tabelaUsuarios\"(idUsuario,nome, usuario, senha) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO \"tabelaUsuarios\"(nome, usuario, senha) VALUES (?, ?, ?)";
     
     try (PreparedStatement statement = conn.prepareStatement(sql)) {
-        // Definindo os parâmetros
-        statement.setString(2, usuario.getNome());
-        statement.setString(3, usuario.getUser());
-        statement.setString(4, usuario.getSenha());
+        statement.setString(1, usuario.getNome());
+        statement.setString(2, usuario.getUser());
+        statement.setString(3, usuario.getSenha());
         
-        // Executando a inserção
-        statement.executeUpdate();  // Usamos executeUpdate para inserções
+        statement.executeUpdate();
         
-        // Confirmando a transação
-        conn.commit(); // Confirmando a transação no banco de dados
+        conn.commit(); 
     } catch (SQLException e) {
         e.printStackTrace();
-        // Caso aconteça algum erro, faz rollback da transação
         conn.rollback();
     }
 }
@@ -46,7 +42,7 @@ public class UsuarioDAO {
     public boolean consultar(Usuario usuario) throws SQLException {
         String sql = "SELECT * FROM tabelaUsuarios WHERE usuario = ? AND senha = ?";
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
-            statement.setString(1, usuario.getUsuario());
+            statement.setString(1, usuario.getUser());
             statement.setString(2, usuario.getSenha());
             ResultSet resultado = statement.executeQuery(); // Use executeQuery para SELECT
             if (resultado.next()) {

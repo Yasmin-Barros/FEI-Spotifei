@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import model.Usuario;
 import view.CadastroGUI;
 import javax.swing.*;
+import view.LoginGUI;
 
 public class ControllerCadastro {
     private CadastroGUI view;
@@ -48,6 +49,7 @@ public class ControllerCadastro {
             connection.commit();  // Confirma a transação
             JOptionPane.showMessageDialog(view, "Usuário cadastrado com sucesso", 
                     "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            new LoginGUI().setVisible(true);
 
         } catch (SQLException e) {
             try {
