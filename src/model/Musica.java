@@ -10,13 +10,13 @@ package model;
  */
 public class Musica{
     int idMusica;
-    String musicaTitulo, musicaGenero, musicaArtista;
+    String musicaTitulo, musicaGenero, nomeArtista;
 
-    public Musica(int idMusica, String musicaNome, String musicaGenero, String musicaArtista) {
+    public Musica(int idMusica, String musicaTitulo, String musicaGenero, String nomeArtista) {
         this.idMusica = idMusica;
         this.musicaTitulo = musicaTitulo;
         this.musicaGenero = musicaGenero;
-        this.musicaArtista = musicaArtista;
+        this.nomeArtista = nomeArtista;
     }
     
     public Musica() {
@@ -35,7 +35,7 @@ public class Musica{
         return musicaTitulo;
     }
 
-    public void setMusicaTitulo(String musicaNome) {
+    public void setMusicaTitulo(String musicaTitulo) {
         this.musicaTitulo = musicaTitulo;
     }
 
@@ -47,12 +47,12 @@ public class Musica{
         this.musicaGenero = musicaGenero;
     }
 
-    public String getMusicaArtista() {
-        return musicaArtista;
+    public String getNomeArtista() {
+        return nomeArtista;
     }
 
-    public void setMusicaArtista(String musicaArtista) {
-        this.musicaArtista = musicaArtista;
+    public void setNomeArtista(String nomeaArtista) {
+        this.nomeArtista = nomeaArtista;
     }
     
     

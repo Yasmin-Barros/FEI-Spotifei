@@ -19,7 +19,7 @@ public class ControllerBuscarMusicas {
     private BuscarMusicasGUI view;
     private MusicaDAO dao;
 
-    public ControllerBuscarMusicas(BuscarMusicasGUI view) throws SQLException {
+    public ControllerBuscarMusicas(BuscarMusicasGUI view) throws SQLException{
         this.view = view;
         
         Connection conn = new Conexao().getConnection();
@@ -27,7 +27,9 @@ public class ControllerBuscarMusicas {
     }
 
     public void buscarMusica() {
-        String textoBusca = view.getCaixaBusca();
+        String textoBusca = view.getCaixaBusca().getText();
+        System.out.println("Texto digitado: '" + textoBusca + "'");
+        
         if (textoBusca == null || textoBusca.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Digite algo!", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;

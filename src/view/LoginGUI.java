@@ -165,6 +165,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void menuItemExibir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExibir4ActionPerformed
         new CadastroGUI().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_menuItemExibir4ActionPerformed
 
     private void CaixaSenhaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaSenhaLoginActionPerformed

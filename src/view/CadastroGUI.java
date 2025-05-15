@@ -188,6 +188,7 @@ public class CadastroGUI extends javax.swing.JFrame {
 
     private void menuItemExibir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExibir4ActionPerformed
         new LoginGUI().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_menuItemExibir4ActionPerformed
 
     public JTextField getCaixaNome() {
@@ -264,4 +265,5 @@ public class CadastroGUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar6;
     private javax.swing.JMenuItem menuItemExibir4;
     // End of variables declaration//GEN-END:variables
+
 }

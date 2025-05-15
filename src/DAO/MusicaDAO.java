@@ -24,15 +24,17 @@ public class MusicaDAO {
     }
 
      public void buscarMusicas(Musica musica, JTable tabelaResultadoMusicas) throws SQLException {
-        String sql = "SELECT * FROM tabelaMusicas WHERE musicaTitulo ILIKE ? "
-                       +"OR nomeArtista ILIKE ? OR musicaGenero ILIKE ?";
+        System.out.println("Valor em musica.getMusicaTitulo(): '" + musica.getMusicaTitulo() + "'");
+         String sql = "SELECT * FROM tabelaMusicas WHERE musicatitulo ILIKE ? "
+                       +"OR musicaGenero ILIKE ? OR nomeArtista ILIKE ?";
         
 
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
-            String busca = "%" + musica + "%";
+            String busca = "%" + musica.getMusicaTitulo() + "%";
+        System.out.println("Texto da busca: " + busca);
 
-            statement.setString(1, busca); // Se for tal ttitulo
-            statement.setString(2, busca); // tal artista etc
+            statement.setString(1, busca);
+            statement.setString(2, busca);
             statement.setString(3, busca);
             
             ResultSet resultado = statement.executeQuery();
@@ -43,8 +45,8 @@ public class MusicaDAO {
             while (resultado.next()) {
                 Object[] row = {
                 resultado.getString("musicaTitulo"),
-                resultado.getString("nomeArtista"),
-                resultado.getString("musicaGenero")
+                resultado.getString("musicaGenero"),
+                resultado.getString("nomeArtista")
             };
             resp.addRow(row);
 }
