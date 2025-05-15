@@ -8,32 +8,47 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.Musica;
+
 /**
  *
  * @author unifybarros
  */
 public class MusicaDAO {
-     public List<Musica> buscarMusicas(String termo) {
-        String sql = "SELECT * FROM musicas WHERE titulo LIKE ? OR artista LIKE ? OR genero LIKE ?";
-        List<Musica> musicas = new ArrayList<>();
+    private Connection conn;
+    
+    public MusicaDAO(Connection conn) {
+        this.conn = conn;
+    }
 
-        try (Connection conexao = Conexao.getConnection();
-             PreparedStatement statement = conexao.prepareStatement(sql)) {
+     public void buscarMusicas(Musica musica, JTable tabelaResultadoMusicas) throws SQLException {
+        String sql = "SELECT * FROM tabelaMusicas WHERE musicaTitulo ILIKE ? "
+                       +"OR nomeArtista ILIKE ? OR musicaGenero ILIKE ?";
+        
 
-            statement.setString(1, "%" + ? + "%");
-            statement.setString(2, "%" + ? + "%");
-            statement.setString(3, "%" + ? + "%");
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            String busca = "%" + musica + "%";
+
+            statement.setString(1, busca); // Se for tal ttitulo
+            statement.setString(2, busca); // tal artista etc
+            statement.setString(3, busca);
             
-             ResultSet resultado = statement.executeQuery();
+            ResultSet resultado = statement.executeQuery();
+            
+            DefaultTableModel resp = (DefaultTableModel) tabelaResultadoMusicas.getModel();
+            resp.setRowCount(0);
+        
             while (resultado.next()) {
-                Musica musica = new Musica();
-                musica.setId(resultado.getInt("id"));
-                musica.setTitulo(resultado.getString("titulo"));
-                musica.setArtista(resultado.getString("artista"));
-                musica.setGenero(resultado.getString("genero"));
-                musica.setDuracao(resultado.getInt("duracao"));
-                musicas.add(musica);
+                Object[] row = {
+                resultado.getString("musicaTitulo"),
+                resultado.getString("nomeArtista"),
+                resultado.getString("musicaGenero")
+            };
+            resp.addRow(row);
+}
+
             }
         }
+}

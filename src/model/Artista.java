@@ -8,6 +8,18 @@ package model;
  *
  * @author unifybarros
  */
-public class Artista extends Pessoa{
-    
+public class Artista{
+    String nome;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Artista(String nome) {
+        this.nome = nome;
+    }
 }

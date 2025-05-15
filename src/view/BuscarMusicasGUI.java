@@ -4,6 +4,10 @@
  */
 package view;
 
+import controller.ControllerBuscarMusicas;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author unifybarros
@@ -15,7 +19,26 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
      */
     public BuscarMusicasGUI() {
         initComponents();
+        
     }
+
+    public String getCaixaBusca() {
+        return caixaBusca.getText();
+    }
+
+    
+
+    public void setCaixaBusca(JTextField caixaBusca) {
+        this.caixaBusca = caixaBusca;
+    }
+
+    public BuscarMusicasGUI(JTextField caixaBusca) {
+        this.caixaBusca = caixaBusca;
+    }
+    
+    public javax.swing.JTable getTabelaResultadoMusicas() {
+        return tabelaResultadoMusicas;
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,30 +50,91 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaResultadoMusicas = new javax.swing.JTable();
+        caixaBusca = new javax.swing.JTextField();
+        botaoBuscarMusica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/By Yasmin Barros (3) (2).png"))); // NOI18N
         jLabel2.setText("jLabel1");
 
+        tabelaResultadoMusicas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Título", "Artista", "Gênero"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabelaResultadoMusicas);
+
+        caixaBusca.setText("Digite aqui");
+        caixaBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caixaBuscaActionPerformed(evt);
+            }
+        });
+
+        botaoBuscarMusica.setText("buscar");
+        botaoBuscarMusica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoBuscarMusicaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(86, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(caixaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botaoBuscarMusica)
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 201, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(caixaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoBuscarMusica))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void caixaBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_caixaBuscaActionPerformed
+
+    private void botaoBuscarMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarMusicaActionPerformed
+        ControllerBuscarMusicas controller = new ControllerBuscarMusicas(this);
+        controller.buscarMusica();
+    }//GEN-LAST:event_botaoBuscarMusicaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,6 +175,12 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoBuscarMusica;
+    private javax.swing.JTextField caixaBusca;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelaResultadoMusicas;
     // End of variables declaration//GEN-END:variables
-}
+
+    }
+

@@ -69,6 +69,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="botaoBuscarMusicas">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="54" green="b9" red="1d" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Buscar M&#xfa;sicas"/>
       </Properties>
       <Events>
@@ -77,6 +80,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="botaoSuasPlaylists">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="54" green="b9" red="1d" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Suas Playlists"/>
       </Properties>
       <Events>
@@ -85,6 +91,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="botaoHistorico">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="54" green="b9" red="1d" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Hist&#xf3;rico"/>
       </Properties>
       <Events>

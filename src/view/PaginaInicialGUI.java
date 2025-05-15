@@ -17,7 +17,7 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
      */
     public PaginaInicialGUI() {
         initComponents();
-        getContentPane().setBackground(new Color(12,12,12)); 
+        getContentPane().setBackground(new Color(13,13,13)); 
     }
 
     /**
@@ -36,6 +36,7 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        botaoBuscarMusicas.setBackground(new java.awt.Color(29, 185, 84));
         botaoBuscarMusicas.setText("Buscar Músicas");
         botaoBuscarMusicas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -43,6 +44,7 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
             }
         });
 
+        botaoSuasPlaylists.setBackground(new java.awt.Color(29, 185, 84));
         botaoSuasPlaylists.setText("Suas Playlists");
         botaoSuasPlaylists.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +52,7 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
             }
         });
 
+        botaoHistorico.setBackground(new java.awt.Color(29, 185, 84));
         botaoHistorico.setText("Histórico");
         botaoHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +103,7 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoBuscarMusicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarMusicasActionPerformed
-        // TODO add your handling code here:
+        new BuscarMusicasGUI().setVisible(true);
     }//GEN-LAST:event_botaoBuscarMusicasActionPerformed
 
     private void botaoSuasPlaylistsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSuasPlaylistsActionPerformed
