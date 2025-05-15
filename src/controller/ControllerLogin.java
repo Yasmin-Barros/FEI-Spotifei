@@ -21,7 +21,6 @@ public class ControllerLogin {
     }
     
     public void procurarUsuario() {
-        String nome = view.getCaixaUsuarioLogin().getText();
         String user = view.getCaixaUsuarioLogin().getText();
         String senha = view.getCaixaSenhaLogin().getText();
         if (senha.isEmpty() || user.isEmpty()) {
@@ -30,7 +29,7 @@ public class ControllerLogin {
             return;
         }
 
-        Usuario usuario = new Usuario(nome, user, senha);
+        Usuario usuario = new Usuario(null, user, senha); // pq pra logar só pede user e seha
 
         Conexao conn = new Conexao();
         try (Connection connection = conn.getConnection()) {
@@ -38,12 +37,20 @@ public class ControllerLogin {
 
             UsuarioDAO dao = new UsuarioDAO(connection);
 
-            dao.consultar(usuario);
+            boolean usuarioExiste = dao.consultar(usuario);
 
             connection.commit();
-            JOptionPane.showMessageDialog(view, "Usuário Logado com sucesso", 
+            
+            if (usuarioExiste) {
+            JOptionPane.showMessageDialog(view, "Usuário logado com sucesso", 
                     "Login", JOptionPane.INFORMATION_MESSAGE);
             new PaginaInicialGUI().setVisible(true);
+            view.dispose(); // Se der tudo certo, abre a pag innicial e fecha a atual
+        } 
+            else {
+            JOptionPane.showMessageDialog(view, "Usuário ou senha inválidos", 
+                    "Erro de login", JOptionPane.ERROR_MESSAGE);
+        }
 
         } catch (SQLException e) {
             try {
@@ -62,4 +69,4 @@ public class ControllerLogin {
     }
 }
 
-}
+

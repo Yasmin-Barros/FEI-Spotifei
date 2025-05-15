@@ -50,6 +50,7 @@ public class ControllerCadastro {
             JOptionPane.showMessageDialog(view, "Usuário cadastrado com sucesso", 
                     "Cadastro", JOptionPane.INFORMATION_MESSAGE);
             new LoginGUI().setVisible(true);
+            view.dispose();
 
         } catch (SQLException e) {
             try {
@@ -69,4 +70,5 @@ public class ControllerCadastro {
             e.printStackTrace();
         }
     }
+
 }
