@@ -3,14 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei-main/src/controller/ControllerLogin.java</file>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei-main/src/view/LoginGUI.java</file>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei-main/src/view/CadastroGUI.java</file>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei-main/src/controller/ControllerCadastro.java</file>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei-main/src/DAO/Conexao.java</file>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei-main/src/DAO/UsuarioDAO.java</file>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei-main/src/model/Usuario.java</file>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei-main/src/model/Spotifei.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/CadastroGUI.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/DAO/Conexao.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/DAO/UsuarioDAO.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/controller/ControllerCadastro.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/controller/ControllerLogin.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/PaginaInicialGUI.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/NovaPlaylistGUI.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/model/Pessoa.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/model/Usuario.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/DAO/MusicaDAO.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/model/Musica.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/model/Artista.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/BuscarMusicasGUI.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/LoginGUI.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/controller/ControllerBuscarMusicas.java</file>
         </group>
     </open-files>
 </project-private>
