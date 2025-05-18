@@ -15,11 +15,11 @@ import view.BuscarMusicasGUI;
  *
  * @author Lukinhas
  */
-public class ControllerBuscarMusicas {
+public class ControllerMusicas {
     private BuscarMusicasGUI view;
     private MusicaDAO dao;
 
-    public ControllerBuscarMusicas(BuscarMusicasGUI view) throws SQLException{
+    public ControllerMusicas(BuscarMusicasGUI view) throws SQLException{
         this.view = view;
         
         Connection conn = new Conexao().getConnection();
@@ -43,6 +43,27 @@ public class ControllerBuscarMusicas {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(view, "Erro ao buscar músicas: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
+        }
+    }
+    
+    public void curtirMusica() {
+        int linhaSelecionada = view.getTabelaResultadoMusicas().getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(view, "Selecione uma música na tabela.");
+            return;
+        }
+        String tituloMusica = (String) view.getTabelaResultadoMusicas().getValueAt(linhaSelecionada, 0);
+
+        try {
+            int id = dao.buscarIdMusicaPorTitulo(tituloMusica);
+            if (id != -1) {
+                dao.curtirMusicas(id, idMusica);
+                JOptionPane.showMessageDialog(view, "Música curtida com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(view, "Música não encontrada no banco.");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(view, "Erro ao curtir música: " + e.getMessage());
         }
     }
 }

@@ -4,7 +4,7 @@
  */
 package view;
 
-import controller.ControllerBuscarMusicas;
+import controller.ControllerMusicas;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -67,6 +67,8 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
         botaoBuscarMusica = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        botaoCurtir = new javax.swing.JButton();
+        botaoDescurtir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,12 +111,25 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/By Yasmin Barros (3) (2).png"))); // NOI18N
         jLabel2.setText("jLabel1");
 
+        botaoCurtir.setText("Curtir");
+        botaoCurtir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCurtirActionPerformed(evt);
+            }
+        });
+
+        botaoDescurtir.setText("Descurtir");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoCurtir)
+                    .addComponent(botaoDescurtir))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(157, 157, 157))
             .addGroup(layout.createSequentialGroup()
@@ -142,7 +157,12 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botaoCurtir)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoDescurtir)))
                 .addContainerGap())
         );
 
@@ -155,12 +175,16 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
 
     private void botaoBuscarMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarMusicaActionPerformed
         try {
-            ControllerBuscarMusicas controller = new ControllerBuscarMusicas(this);
+            ControllerMusicas controller = new ControllerMusicas(this);
             controller.buscarMusica();
         } catch (SQLException ex) {
             Logger.getLogger(BuscarMusicasGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botaoBuscarMusicaActionPerformed
+
+    private void botaoCurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCurtirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoCurtirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +226,8 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoBuscarMusica;
+    private javax.swing.JButton botaoCurtir;
+    private javax.swing.JButton botaoDescurtir;
     private javax.swing.JTextField caixaBusca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -20,7 +20,7 @@ public class UsuarioDAO {
     public UsuarioDAO(Connection conn) {
         this.conn = conn;
     }
-    
+   
     public void cadastrar(Usuario usuario) throws SQLException {
     String sql = "INSERT INTO tabelausuarios(nome, usuario, senha) VALUES (?, ?, ?)";
 

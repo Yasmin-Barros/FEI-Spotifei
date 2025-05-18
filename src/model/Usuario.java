@@ -9,12 +9,22 @@ package model;
  * @author unifybarros
  */
 public class Usuario extends Pessoa implements IAutenticacao{
+    private int id;
     String nome, user, senha;
 
-    public Usuario(String nome, String user, String senha) {
+    public Usuario(int id,String nome, String user, String senha) {
+        this.id = id;
         this.nome = nome;
         this.user = user;
         this.senha = senha;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
