@@ -92,7 +92,7 @@ public class MusicaDAO {
             }
 
             // pra curtir
-            String curtida = "INSERT INTO tabelacurtidas (usuarioid, musicaid) VALUES (?, ?)";
+            String curtida = "INSERT INTO tabeladescurtidas (usuarioid, musicaid) VALUES (?, ?)";
             try (PreparedStatement statement = conn.prepareStatement(curtida)) {
                 statement.setInt(1, idUsuario);
                 statement.setInt(2, idMusica);

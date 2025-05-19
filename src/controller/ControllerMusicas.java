@@ -81,15 +81,9 @@ public class ControllerMusicas {
 
         int idMusica = (int) view.getTabelaResultadoMusicas().getValueAt(linhaSelecionada, 3);
 
-        try {
-            dao.descurtirMusicas(idMusica, this.idUsuario);
-            JOptionPane.showMessageDialog(view, "Música descurtida com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(view, "Erro ao descurtir música: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        }
+        dao.descurtirMusicas(idMusica, this.idUsuario);
+        JOptionPane.showMessageDialog(view, "Música descurtida com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
     }
-
 }
 
 
