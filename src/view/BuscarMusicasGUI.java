@@ -18,6 +18,8 @@ import javax.swing.JTextField;
  * @author unifybarros
  */
 public class BuscarMusicasGUI extends javax.swing.JFrame {
+    //private int idUsuario;
+    
 
     /**
      * Creates new form Buscarmu
@@ -25,7 +27,6 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
     public BuscarMusicasGUI() {
         initComponents();
         getContentPane().setBackground(new Color(12,12,12));
-
     }
 
     public JButton getBotaoBuscarMusica() {
@@ -74,16 +75,16 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
 
         tabelaResultadoMusicas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Título", "Gênero", "Artista"
+                "Título", "Gênero", "Artista", "id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -91,6 +92,11 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tabelaResultadoMusicas);
+        if (tabelaResultadoMusicas.getColumnModel().getColumnCount() > 0) {
+            tabelaResultadoMusicas.getColumnModel().getColumn(3).setMinWidth(0);
+            tabelaResultadoMusicas.getColumnModel().getColumn(3).setPreferredWidth(0);
+            tabelaResultadoMusicas.getColumnModel().getColumn(3).setMaxWidth(0);
+        }
 
         caixaBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +125,11 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
         });
 
         botaoDescurtir.setText("Descurtir");
+        botaoDescurtir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoDescurtirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,8 +194,22 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoBuscarMusicaActionPerformed
 
     private void botaoCurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCurtirActionPerformed
-        // TODO add your handling code here:
+        try {
+            ControllerMusicas controller = new ControllerMusicas(this);
+            controller.curtirMusica();
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarMusicasGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botaoCurtirActionPerformed
+
+    private void botaoDescurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDescurtirActionPerformed
+        try {
+            ControllerMusicas controller = new ControllerMusicas(this);
+            controller.descurtirMusica();
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarMusicasGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_botaoDescurtirActionPerformed
 
     /**
      * @param args the command line arguments

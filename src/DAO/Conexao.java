@@ -17,7 +17,7 @@ public class Conexao {
     public Connection getConnection() throws SQLException {
         if (conexao == null || conexao.isClosed()) {
             conexao = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/spotifeiDB", "postgres", "aa"
+                "jdbc:postgresql://localhost:5432/spotifeiDB", "postgres", "123321"
                 //"jdbc:postgresql://localhost:5432/spotifeiDB", "postgres", "aaa"
             );
         }

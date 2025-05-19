@@ -32,7 +32,7 @@ public class ControllerCadastro {
             return;
         }
 
-        Usuario usuario = new Usuario(null,nome, user, senha);
+        Usuario usuario = new Usuario(nome, user, senha);
 
         // Estabelecendo a conexão com o banco
         Conexao conn = new Conexao();

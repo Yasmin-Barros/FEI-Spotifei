@@ -29,9 +29,10 @@ public class ControllerLogin {
             return;
         }
 
-        Usuario usuario = new Usuario(null, user, senha); // pq pra logar só pede user e seha
+        Usuario usuario = new Usuario(user, senha); // pq pra logar só pede user e seha
 
         Conexao conn = new Conexao();
+        
         try (Connection connection = conn.getConnection()) {
             connection.setAutoCommit(false);
 
@@ -42,8 +43,14 @@ public class ControllerLogin {
             connection.commit();
             
             if (usuarioExiste) {
-            JOptionPane.showMessageDialog(view, "Usuário logado com sucesso", 
-                    "Login", JOptionPane.INFORMATION_MESSAGE);
+                System.out.println("Tentando login com usuário: " + usuario.getUser() + " e senha: " + usuario.getSenha());
+
+                int idUsuario = dao.buscarIdUsuario(usuario);
+                usuario.setId(idUsuario);
+                Usuario.setUsuarioLogado(usuario);
+                JOptionPane.showMessageDialog(view, "Usuário logado com sucesso", 
+                        "Login", JOptionPane.INFORMATION_MESSAGE);
+            
             new PaginaInicialGUI().setVisible(true);
             view.dispose(); // Se der tudo certo, abre a pag innicial e fecha a atual
         } 
@@ -53,18 +60,9 @@ public class ControllerLogin {
         }
 
         } catch (SQLException e) {
-            try {
-                if (conn != null) {
-                    conn.rollback();
-                }
-            } catch (SQLException rollbackEx) {
-                JOptionPane.showMessageDialog(view, "Falha no rollback", 
-                        "Erro!", JOptionPane.ERROR_MESSAGE);
-                rollbackEx.printStackTrace();
-            }
-            JOptionPane.showMessageDialog(view, "Falha no Login", 
-                    "Erro!", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+        JOptionPane.showMessageDialog(view, "Falha no Login", 
+                "Erro!", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
         }
     }
 }

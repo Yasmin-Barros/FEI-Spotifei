@@ -21,26 +21,41 @@ public class UsuarioDAO {
         this.conn = conn;
     }
    
-    public void cadastrar(Usuario usuario) throws SQLException {
-    String sql = "INSERT INTO tabelausuarios(nome, usuario, senha) VALUES (?, ?, ?)";
+    public int buscarIdUsuario(Usuario usuario) throws SQLException {
+        String sql = "SELECT id FROM tabelausuarios WHERE usuario = ? AND senha = ?";
 
-    try (PreparedStatement statement = conn.prepareStatement(sql)) {
-        statement.setString(1, usuario.getNome());
-        statement.setString(2, usuario.getUser());
-        statement.setString(3, usuario.getSenha());
-        
-        statement.executeUpdate();
-        
-        conn.commit(); 
-    } catch (SQLException e) {
-        e.printStackTrace();
-        conn.rollback();
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setString(1, usuario.getUser());
+            statement.setString(2, usuario.getSenha());
+            
+            ResultSet resultado = statement.executeQuery();
+
+            if (resultado.next()) {
+                return resultado.getInt("id");
+            } else {
+                throw new SQLException("Usuário não encontrado.");
+            }
+        }
     }
-}
+
+    
+    public void cadastrar(Usuario usuario) throws SQLException {
+        String sql = "INSERT INTO tabelausuarios(nome, usuario, senha) VALUES (?, ?, ?)";
+
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setString(1, usuario.getNome());
+            statement.setString(2, usuario.getUser());
+            statement.setString(3, usuario.getSenha());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     
     public boolean consultar(Usuario usuario) throws SQLException {
-        String sql = "SELECT * FROM tabelaUsuarios WHERE usuario = ? AND senha = ?";
+        String sql = "SELECT * FROM tabelausuarios WHERE usuario = ? AND senha = ?";
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, usuario.getUser());
             statement.setString(2, usuario.getSenha());

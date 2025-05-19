@@ -18,6 +18,17 @@ public class Usuario extends Pessoa implements IAutenticacao{
         this.user = user;
         this.senha = senha;
     }
+    
+    public Usuario(String nome, String user, String senha) {
+        this.nome = nome;
+        this.user = user;
+        this.senha = senha;
+    }
+    
+    public Usuario(String user,String senha){
+        this.user = user;
+        this.senha = senha;
+    }
 
     public int getId() {
         return id;
@@ -49,6 +60,16 @@ public class Usuario extends Pessoa implements IAutenticacao{
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    
+    private static Usuario usuarioLogado;
+
+    public static Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public static void setUsuarioLogado(Usuario usuario) {
+        usuarioLogado = usuario;
     }
 
 }

@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.Musica;
+import model.Usuario;
 import view.BuscarMusicasGUI;
 /**
  *
@@ -18,15 +19,24 @@ import view.BuscarMusicasGUI;
 public class ControllerMusicas {
     private BuscarMusicasGUI view;
     private MusicaDAO dao;
+    int idUsuario;
 
     public ControllerMusicas(BuscarMusicasGUI view) throws SQLException{
+        Usuario usuariologado = Usuario.getUsuarioLogado();
+        
+        if (usuariologado == null) {
+        JOptionPane.showMessageDialog(view, "Nenhum usuário está logado. Faça login primeiro.", "Erro", JOptionPane.ERROR_MESSAGE);
+        throw new IllegalStateException("Tentativa de usar ControllerMusicas sem usuário logado.");
+    }
+        this.idUsuario = usuariologado.getId();
         this.view = view;
+        //this.idUsuario = idUsuario;
         
         Connection conn = new Conexao().getConnection();
         this.dao = new MusicaDAO(conn);
     }
 
-    public void buscarMusica() {
+    public void buscarMusica() throws SQLException{
         String textoBusca = view.getCaixaBusca().getText();
         System.out.println("Texto digitado: '" + textoBusca + "'");
         
@@ -46,25 +56,42 @@ public class ControllerMusicas {
         }
     }
     
-    public void curtirMusica() {
+    public void curtirMusica() throws SQLException{
         int linhaSelecionada = view.getTabelaResultadoMusicas().getSelectedRow();
+        
         if (linhaSelecionada == -1) {
-            JOptionPane.showMessageDialog(view, "Selecione uma música na tabela.");
+            
+            JOptionPane.showMessageDialog(view, "Selecione uma música para curtir.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String tituloMusica = (String) view.getTabelaResultadoMusicas().getValueAt(linhaSelecionada, 0);
+
+        int idMusica = (int) view.getTabelaResultadoMusicas().getValueAt(linhaSelecionada, 3);
+        
+        dao.curtirMusicas(idMusica, this.idUsuario);
+        JOptionPane.showMessageDialog(view, "Música curtida com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void descurtirMusica() throws SQLException{
+        int linhaSelecionada = view.getTabelaResultadoMusicas().getSelectedRow();
+
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(view, "Selecione uma música para descurtir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int idMusica = (int) view.getTabelaResultadoMusicas().getValueAt(linhaSelecionada, 3);
 
         try {
-            int id = dao.buscarIdMusicaPorTitulo(tituloMusica);
-            if (id != -1) {
-                dao.curtirMusicas(id, idMusica);
-                JOptionPane.showMessageDialog(view, "Música curtida com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(view, "Música não encontrada no banco.");
-            }
+            dao.descurtirMusicas(idMusica, this.idUsuario);
+            JOptionPane.showMessageDialog(view, "Música descurtida com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(view, "Erro ao curtir música: " + e.getMessage());
+            JOptionPane.showMessageDialog(view, "Erro ao descurtir música: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
     }
+
 }
+
+
+
 
