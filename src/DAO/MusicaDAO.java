@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Musica;
@@ -18,20 +19,20 @@ import model.Usuario;
  * @author unifybarros
  */
 public class MusicaDAO {
+
     private Connection conn;
     int idUsuario = Usuario.getUsuarioLogado().getId();
-    
+
     public MusicaDAO(Connection conn) {
         this.conn = conn;
     }
 
-     public void buscarMusicas(Musica musica, JTable tabelaResultadoMusicas) throws SQLException {
+    public void buscarMusicas(Musica musica, JTable tabelaResultadoMusicas) throws SQLException {
         System.out.println("Valor em musica.getMusicaTitulo(): '" + musica.getMusicaTitulo() + "'");
         System.out.println("idUsuario recebido: " + idUsuario);
 
-         String sql = "SELECT * FROM tabelaMusicas WHERE musicatitulo ILIKE ? "
-                       +"OR musicaGenero ILIKE ? OR nomeArtista ILIKE ?";
-        
+        String sql = "SELECT * FROM tabelaMusicas WHERE musicatitulo ILIKE ? "
+                + "OR musicaGenero ILIKE ? OR nomeArtista ILIKE ?";
 
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
             String busca = "%" + musica.getMusicaTitulo() + "%";
@@ -41,77 +42,135 @@ public class MusicaDAO {
             statement.setString(1, busca);
             statement.setString(2, busca);
             statement.setString(3, busca);
-            
+
             ResultSet resultado = statement.executeQuery();
-            
+
             DefaultTableModel resp = (DefaultTableModel) tabelaResultadoMusicas.getModel();
             resp.setRowCount(0);
-        
+
             while (resultado.next()) {
                 Object[] row = {
-                resultado.getString("musicaTitulo"),
-                resultado.getString("musicaGenero"),
-                resultado.getString("nomeArtista"),
-                resultado.getInt("idmusica")
-            };
-            resp.addRow(row);
-            }
-
-            }
-        }
-     
-     public void curtirMusicas(int idMusica, int idUsuario) throws SQLException {
-            //int idMus = buscarIdMusica(idMusica);
-             
-            //P caso o usuário curta uma musica que está descurtida, tira a musica da tabela descurtida
-            String sql = "DELETE FROM tabeladescurtidas WHERE usuarioid = ? AND musicaid = ?";
-            try (PreparedStatement statement = conn.prepareStatement(sql)) {
-                statement.setInt(1, idUsuario);
-                statement.setInt(2, idMusica);
-                statement.executeUpdate();
-            }
-
-            // pra curtir
-            String curtida = "INSERT INTO tabelacurtidas (usuarioid, musicaid) VALUES (?, ?) ON CONFLICT DO NOTHING";
-            try (PreparedStatement statement = conn.prepareStatement(curtida)) {
-                statement.setInt(1, idUsuario);
-                statement.setInt(2, idMusica);
-                statement.executeUpdate();
+                    resultado.getString("musicaTitulo"),
+                    resultado.getString("musicaGenero"),
+                    resultado.getString("nomeArtista"),
+                    resultado.getInt("idmusica")
+                };
+                resp.addRow(row);
             }
 
         }
-        
-        public void descurtirMusicas(int idMusica,int idUsuario) throws SQLException {
-            //int idmusica = buscarIdMusica(titulo);
-            //P caso o usuário curta uma musica que está descurtida, tira a musica da tabela descurtida
-            String sql = "DELETE FROM tabeladescurtidas WHERE usuarioid = ? AND musicaid = ?";
-            try (PreparedStatement statement = conn.prepareStatement(sql)) {
-                statement.setInt(1, idUsuario);
-                statement.setInt(2, idMusica);
-                statement.executeUpdate();
-            }
-
-            // pra curtir
-            String curtida = "INSERT INTO tabeladescurtidas (usuarioid, musicaid) VALUES (?, ?)";
-            try (PreparedStatement statement = conn.prepareStatement(curtida)) {
-                statement.setInt(1, idUsuario);
-                statement.setInt(2, idMusica);
-                statement.executeUpdate();
-            }
     }
-        
-        public int buscarIdMusica(int idMusica) throws SQLException {
-            String sql = "SELECT idmusica FROM tabelamusicas WHERE idmusica = ?";
-            try (PreparedStatement statement = conn.prepareStatement(sql)) {
-                statement.setInt(1, idMusica);
-                try (ResultSet rs = statement.executeQuery()) {
-                    if (rs.next()) {
-                        return rs.getInt("idmusica");
-                    } else {
-                        return -1; 
-                    }
-                }
+
+    public void registrarHistorico(String texto) throws SQLException {
+        String sql = "INSERT INTO tabelahistorico (usuarioid, textoBusca) VALUES (?, ?)";
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            System.out.println("Salvando no histórico: " + texto + " para usuário: " + idUsuario);
+            statement.setInt(1, idUsuario);
+            statement.setString(2, texto);
+            statement.executeUpdate();
+        }
+    }
+
+    public ArrayList<String> ultimasBuscas(int idUsuario) throws SQLException {
+        ArrayList<String> historico = new ArrayList<>();
+        String sql = "SELECT textoBusca FROM tabelahistorico WHERE usuarioid = ? "
+                + "ORDER BY id DESC LIMIT 10";
+
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setInt(1, idUsuario);
+            ResultSet resultado = statement.executeQuery();
+            while (resultado.next()) {
+                System.out.println(resultado.getString("textoBusca"));
+                historico.add(resultado.getString("textoBusca"));
             }
         }
 
+        return historico;
+    }
+
+    public ArrayList<Musica> buscarCurtidas() throws SQLException {
+        ArrayList<Musica> lista = new ArrayList<>();
+
+        String sql = "SELECT m.* FROM tabelacurtidas c JOIN tabelamusicas m ON c.musicaid = m.idmusica WHERE c.usuarioid = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Musica m = new Musica();
+                m.setMusicaTitulo(rs.getString("musicatitulo"));
+                m.setMusicaGenero(rs.getString("musicagenero"));
+                m.setNomeArtista(rs.getString("nomeartista"));
+                lista.add(m);
+            }
+        }
+
+        return lista;
+    }
+
+    public ArrayList<Musica> buscarDescurtidas() throws SQLException {
+        ArrayList<Musica> lista = new ArrayList<>();
+
+        String sql = "SELECT m.* FROM tabeladescurtidas d JOIN tabelamusicas m ON d.musicaid = m.idmusica WHERE d.usuarioid = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Musica m = new Musica();
+                m.setMusicaTitulo(rs.getString("musicatitulo"));
+                m.setMusicaGenero(rs.getString("musicagenero"));
+                m.setNomeArtista(rs.getString("nomeartista"));
+                lista.add(m);
+            }
+        }
+
+        return lista;
+    }
+
+    public void curtirMusicas(int idMusica, int idUsuario) throws SQLException {
+
+        //P caso o usuário curta uma musica que está descurtida, tira a musica da tabela descurtida
+        String sql = "DELETE FROM tabeladescurtidas WHERE usuarioid = ? AND musicaid = ?";
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setInt(1, idUsuario);
+            statement.setInt(2, idMusica);
+            statement.executeUpdate();
+        }
+
+        // pra curtir
+        String curtida = "INSERT INTO tabelacurtidas (usuarioid, musicaid) VALUES (?, ?) ON CONFLICT DO NOTHING";
+        try (PreparedStatement statement = conn.prepareStatement(curtida)) {
+            statement.setInt(1, idUsuario);
+            statement.setInt(2, idMusica);
+            statement.executeUpdate();
+        }
+
+    }
+
+    public void descurtirMusicas(int idMusica, int idUsuario) throws SQLException {
+        String sql = "DELETE FROM tabeladescurtidas WHERE usuarioid = ? AND musicaid = ?";
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setInt(1, idUsuario);
+            statement.setInt(2, idMusica);
+            statement.executeUpdate();
+        }
+
+        // pra curtir
+        String curtida = "INSERT INTO tabeladescurtidas (usuarioid, musicaid) VALUES (?, ?)";
+        try (PreparedStatement statement = conn.prepareStatement(curtida)) {
+            statement.setInt(1, idUsuario);
+            statement.setInt(2, idMusica);
+            statement.executeUpdate();
+        }
+    }
+
+    /**
+     * public int buscarIdMusica(int idMusica) throws SQLException { String sql
+     * = "SELECT idmusica FROM tabelamusicas WHERE idmusica = ?"; try
+     * (PreparedStatement statement = conn.prepareStatement(sql)) {
+     * statement.setInt(1, idMusica); try (ResultSet rs =
+     * statement.executeQuery()) { if (rs.next()) { return
+     * rs.getInt("idmusica"); } else { return -1; } } } }*
+     */
 }

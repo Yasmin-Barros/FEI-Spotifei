@@ -72,7 +72,7 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
                 .addComponent(botaoBuscarMusicas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botaoSuasPlaylists)
-                .addGap(41, 41, 41))
+                .addGap(42, 42, 42))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -86,14 +86,11 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(botaoBuscarMusicas))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(botaoSuasPlaylists)))
-                .addGap(74, 74, 74)
+                .addGap(129, 129, 129)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoBuscarMusicas)
+                    .addComponent(botaoSuasPlaylists))
+                .addGap(86, 86, 86)
                 .addComponent(botaoHistorico)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -111,7 +108,8 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoSuasPlaylistsActionPerformed
 
     private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
-        // TODO add your handling code here:
+        new HistoricoGUI().setVisible(true);
+        //this.dispose();
     }//GEN-LAST:event_botaoHistoricoActionPerformed
 
     /**

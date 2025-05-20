@@ -70,6 +70,7 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         botaoCurtir = new javax.swing.JButton();
         botaoDescurtir = new javax.swing.JButton();
+        botaoVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +132,13 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
             }
         });
 
+        botaoVoltar.setText("Voltar");
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,11 +164,17 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(115, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botaoVoltar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(10, 10, 10)
+                .addComponent(botaoVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(caixaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -211,6 +225,11 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoDescurtirActionPerformed
 
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+        new PaginaInicialGUI().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -253,6 +272,7 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
     private javax.swing.JButton botaoBuscarMusica;
     private javax.swing.JButton botaoCurtir;
     private javax.swing.JButton botaoDescurtir;
+    private javax.swing.JButton botaoVoltar;
     private javax.swing.JTextField caixaBusca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

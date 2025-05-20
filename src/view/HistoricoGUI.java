@@ -4,6 +4,15 @@
  */
 package view;
 
+import controller.ControllerHistorico;
+import controller.ControllerMusicas;
+import java.awt.Color;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import java.sql.SQLException;
+
+
 /**
  *
  * @author unifybarros
@@ -15,6 +24,19 @@ public class HistoricoGUI extends javax.swing.JFrame {
      */
     public HistoricoGUI() {
         initComponents();
+        getContentPane().setBackground(new Color(12,12,12)); 
+        
+        jTabbedPane1.addChangeListener(e -> {
+        int index = jTabbedPane1.getSelectedIndex();
+        if (index == 0) { // Aba 0 = Histórico
+            try {
+                ControllerHistorico controller = new ControllerHistorico(this);
+                controller.carregarHistorico();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    });
     }
 
     /**
@@ -26,40 +48,168 @@ public class HistoricoGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabHistorico = new javax.swing.JScrollPane();
+        tabelaResultadoHistorico = new javax.swing.JTable();
+        tabCurtidas = new javax.swing.JScrollPane();
+        tabelaResultadoCurtidas = new javax.swing.JTable();
+        tabDescurtidas = new javax.swing.JScrollPane();
+        tabelaResultadoDescurtidas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        tabelaResultadoHistorico.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Título"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
+        tabHistorico.setViewportView(tabelaResultadoHistorico);
+
+        jTabbedPane1.addTab("Histórico", tabHistorico);
+
+        tabelaResultadoCurtidas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Título", "Gênero", "Artista", "ID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tabCurtidas.setViewportView(tabelaResultadoCurtidas);
+
+        jTabbedPane1.addTab("Curtidas", tabCurtidas);
+
+        tabelaResultadoDescurtidas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Título", "Gênero", "Artista", "ID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tabDescurtidas.setViewportView(tabelaResultadoDescurtidas);
+
+        jTabbedPane1.addTab("Descurtidas", tabDescurtidas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(161, 161, 161))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    public JTabbedPane getjTabbedPane1() {
+        return jTabbedPane1;
+    }
+
+    public void setjTabbedPane1(JTabbedPane jTabbedPane1) {
+        this.jTabbedPane1 = jTabbedPane1;
+    }
+
+    public JTable getjTable3() {
+        return tabelaResultadoDescurtidas;
+    }
+
+    public void setjTable3(JTable jTable3) {
+        this.tabelaResultadoDescurtidas = jTable3;
+    }
+
+    public JScrollPane getTabCurtidas() {
+        return tabCurtidas;
+    }
+
+    public void setTabCurtidas(JScrollPane tabCurtidas) {
+        this.tabCurtidas = tabCurtidas;
+    }
+
+    public JScrollPane getTabDescurtidas() {
+        return tabDescurtidas;
+    }
+
+    public void setTabDescurtidas(JScrollPane tabDescurtidas) {
+        this.tabDescurtidas = tabDescurtidas;
+    }
+
+    public JScrollPane getTabHistorico() {
+        return tabHistorico;
+    }
+
+    public void setTabHistorico(JScrollPane tabHistorico) {
+        this.tabHistorico = tabHistorico;
+    }
+
+    public JTable getTabelaCurtidas() {
+        return tabelaResultadoCurtidas;
+    }
+
+    public void setTabelaCurtidas(JTable tabelaCurtidas) {
+        this.tabelaResultadoCurtidas = tabelaCurtidas;
+    }
+
+    public JTable getTabelaResultadoHistorico() {
+        return tabelaResultadoHistorico;
+    }
+
+    public void setTabelaResultadoHistorico(JTable tabelaResultadoHistorico) {
+        this.tabelaResultadoHistorico = tabelaResultadoHistorico;
+    }
+
+    public JTable getTabelaResultadoCurtidas() {
+        return tabelaResultadoCurtidas;
+    }
+
+    public JTable getTabelaResultadoDescurtidas() {
+        return tabelaResultadoDescurtidas;
+    }
 
     /**
      * @param args the command line arguments
@@ -93,11 +243,17 @@ public class HistoricoGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HistoricoGUI().setVisible(true);
-            }
+                }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane tabCurtidas;
+    private javax.swing.JScrollPane tabDescurtidas;
+    private javax.swing.JScrollPane tabHistorico;
+    private javax.swing.JTable tabelaResultadoCurtidas;
+    private javax.swing.JTable tabelaResultadoDescurtidas;
+    private javax.swing.JTable tabelaResultadoHistorico;
     // End of variables declaration//GEN-END:variables
 }
