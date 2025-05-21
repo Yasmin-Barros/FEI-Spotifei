@@ -5,11 +5,13 @@
 package view;
 
 import controller.ControllerMusicas;
+import controller.ControllerPlaylist;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -19,14 +21,13 @@ import javax.swing.JTextField;
  */
 public class BuscarMusicasGUI extends javax.swing.JFrame {
     //private int idUsuario;
-    
 
     /**
      * Creates new form Buscarmu
      */
     public BuscarMusicasGUI() {
         initComponents();
-        getContentPane().setBackground(new Color(12,12,12));
+        getContentPane().setBackground(new Color(12, 12, 12));
     }
 
     public JButton getBotaoBuscarMusica() {
@@ -71,6 +72,7 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
         botaoCurtir = new javax.swing.JButton();
         botaoDescurtir = new javax.swing.JButton();
         botaoVoltar = new javax.swing.JButton();
+        botaoAddPlaylist = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,6 +141,13 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
             }
         });
 
+        botaoAddPlaylist.setText("Adicionar à Playlist");
+        botaoAddPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAddPlaylistActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,13 +158,18 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(caixaBusca)
-                        .addGap(18, 18, 18)
-                        .addComponent(botaoBuscarMusica)
-                        .addGap(23, 23, 23))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(115, Short.MAX_VALUE))))
+                        .addContainerGap(129, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(botaoAddPlaylist))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(caixaBusca)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoBuscarMusica)))
+                        .addGap(23, 23, 23))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -182,14 +196,19 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(botaoBuscarMusica))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botaoCurtir)
-                        .addGap(18, 18, 18)
-                        .addComponent(botaoDescurtir)
-                        .addGap(41, 41, 41))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botaoDescurtir))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(botaoAddPlaylist)))
+                        .addGap(59, 59, 59))
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -232,6 +251,20 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
+    private void botaoAddPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAddPlaylistActionPerformed
+        int linhaSelecionada = tabelaResultadoMusicas.getSelectedRow();
+    if (linhaSelecionada == -1) {
+        JOptionPane.showMessageDialog(this, "Selecione uma música para adicionar à playlist.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    // Id da música está na coluna 3 (oculta)
+    int idMusica = (int) tabelaResultadoMusicas.getModel().getValueAt(linhaSelecionada, 3);
+    
+    // Abrir a GUI de seleção de playlist passando o id da música
+    AdicionarPlaylistGUI adicionarPlaylistGUI = new AdicionarPlaylistGUI(idMusica, this);
+    adicionarPlaylistGUI.setVisible(true);
+    }//GEN-LAST:event_botaoAddPlaylistActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +304,7 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoAddPlaylist;
     private javax.swing.JButton botaoBuscarMusica;
     private javax.swing.JButton botaoCurtir;
     private javax.swing.JButton botaoDescurtir;
