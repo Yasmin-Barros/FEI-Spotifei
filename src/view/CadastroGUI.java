@@ -21,6 +21,7 @@ public class CadastroGUI extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new Color(12,12,12)); 
         jButton1.setBackground(new Color(30, 215, 96));
+        setLocationRelativeTo(null); 
         
 
     }

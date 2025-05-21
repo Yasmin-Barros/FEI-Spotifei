@@ -27,6 +27,7 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
     public BuscarMusicasGUI() {
         initComponents();
         getContentPane().setBackground(new Color(12, 12, 12));
+        setLocationRelativeTo(null); 
     }
 
     public JButton getBotaoBuscarMusica() {
@@ -105,6 +106,9 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
             }
         });
 
+        botaoBuscarMusica.setBackground(new java.awt.Color(29, 185, 84));
+        botaoBuscarMusica.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        botaoBuscarMusica.setForeground(new java.awt.Color(0, 0, 0));
         botaoBuscarMusica.setText("Procurar");
         botaoBuscarMusica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,12 +116,16 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Música:");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/By Yasmin Barros (3) (2).png"))); // NOI18N
         jLabel2.setText("jLabel1");
 
+        botaoCurtir.setBackground(new java.awt.Color(255, 102, 102));
+        botaoCurtir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        botaoCurtir.setForeground(new java.awt.Color(0, 0, 0));
         botaoCurtir.setText("Curtir");
         botaoCurtir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +133,9 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
             }
         });
 
+        botaoDescurtir.setBackground(new java.awt.Color(255, 102, 102));
+        botaoDescurtir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        botaoDescurtir.setForeground(new java.awt.Color(0, 0, 0));
         botaoDescurtir.setText("Descurtir");
         botaoDescurtir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +143,9 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
             }
         });
 
+        botaoVoltar.setBackground(new java.awt.Color(29, 185, 84));
+        botaoVoltar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        botaoVoltar.setForeground(new java.awt.Color(0, 0, 0));
         botaoVoltar.setText("Voltar");
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +164,7 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(129, Short.MAX_VALUE))
+                        .addContainerGap(124, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(caixaBusca)
                         .addGap(18, 18, 18)
@@ -182,7 +196,7 @@ public class BuscarMusicasGUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(botaoBuscarMusica))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()

@@ -25,7 +25,8 @@ public class HistoricoGUI extends javax.swing.JFrame {
     public HistoricoGUI() {
         initComponents();
         getContentPane().setBackground(new Color(12,12,12)); 
-        jTabbedPane1.setForeground(Color.GREEN); // Cor de fundo dos botões de aba
+        setLocationRelativeTo(null); 
+        jTabbedPane1.setForeground(Color.WHITE); // Cor de fundo dos botões de aba
 
         
         jTabbedPane1.addChangeListener(e -> {
@@ -82,8 +83,8 @@ public class HistoricoGUI extends javax.swing.JFrame {
         tabelaResultadoCurtidas = new javax.swing.JTable();
         tabDescurtidas = new javax.swing.JScrollPane();
         tabelaResultadoDescurtidas = new javax.swing.JTable();
-        botaoVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        botaoVoltar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -174,14 +175,17 @@ public class HistoricoGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Descurtidas", tabDescurtidas);
 
-        botaoVoltar.setText("Voltar");
-        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/By Yasmin Barros (3) (2).png"))); // NOI18N
+
+        botaoVoltar1.setBackground(new java.awt.Color(29, 185, 84));
+        botaoVoltar1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        botaoVoltar1.setForeground(new java.awt.Color(0, 0, 0));
+        botaoVoltar1.setText("Voltar");
+        botaoVoltar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoVoltarActionPerformed(evt);
+                botaoVoltar1ActionPerformed(evt);
             }
         });
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/By Yasmin Barros (3) (2).png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,34 +194,34 @@ public class HistoricoGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(botaoVoltar))
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addGap(84, 84, 84)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel1)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(botaoVoltar1)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botaoVoltar)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addComponent(botaoVoltar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(jLabel1))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+    private void botaoVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltar1ActionPerformed
         new PaginaInicialGUI().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_botaoVoltarActionPerformed
+    }//GEN-LAST:event_botaoVoltar1ActionPerformed
 
     public JTabbedPane getjTabbedPane1() {
         return jTabbedPane1;
@@ -320,7 +324,7 @@ public class HistoricoGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoVoltar;
+    private javax.swing.JButton botaoVoltar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;

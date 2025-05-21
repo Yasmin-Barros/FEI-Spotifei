@@ -25,7 +25,8 @@ public class LoginGUI extends javax.swing.JFrame {
     public LoginGUI() {
         initComponents();
         getContentPane().setBackground(new Color(12,12,12)); 
-        
+        setLocationRelativeTo(null); // Centraliza
+        setVisible(true);
     }
 
     /**
