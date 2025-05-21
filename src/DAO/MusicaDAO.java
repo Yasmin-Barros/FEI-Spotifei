@@ -164,13 +164,4 @@ public class MusicaDAO {
             statement.executeUpdate();
         }
     }
-
-    /**
-     * public int buscarIdMusica(int idMusica) throws SQLException { String sql
-     * = "SELECT idmusica FROM tabelamusicas WHERE idmusica = ?"; try
-     * (PreparedStatement statement = conn.prepareStatement(sql)) {
-     * statement.setInt(1, idMusica); try (ResultSet rs =
-     * statement.executeQuery()) { if (rs.next()) { return
-     * rs.getInt("idmusica"); } else { return -1; } } } }*
-     */
 }

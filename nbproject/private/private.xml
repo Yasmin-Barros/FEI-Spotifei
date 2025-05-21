@@ -5,7 +5,6 @@
         <group>
             <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/CadastroGUI.java</file>
             <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/DAO/Conexao.java</file>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/DAO/UsuarioDAO.java</file>
             <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/controller/ControllerCadastro.java</file>
             <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/controller/ControllerLogin.java</file>
             <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/PaginaInicialGUI.java</file>
@@ -19,7 +18,14 @@
             <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/controller/ControllerMusicas.java</file>
             <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/DAO/HistoricoDAO.java</file>
             <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/LoginGUI.java</file>
-            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/model/IAutenticacao.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/HistoricoGUI.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/DAO/UsuarioDAO.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/controller/ControllerHistorico.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/model/Playlist.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/DAO/PlaylistDAO.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/controller/ControllerPlaylist.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/PlaylistsGUI.java</file>
+            <file>file:/C:/Users/Lukinhas/Documents/NetBeansProjects/FEI-Spotifei/src/view/AdicionarPlaylistGUI.java</file>
         </group>
     </open-files>
 </project-private>
