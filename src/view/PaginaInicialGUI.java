@@ -30,13 +30,15 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         botaoBuscarMusicas = new javax.swing.JButton();
-        botaoSuasPlaylists = new javax.swing.JButton();
-        botaoHistorico = new javax.swing.JButton();
+        botaoLogout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        botaoHistorico1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         botaoBuscarMusicas.setBackground(new java.awt.Color(29, 185, 84));
+        botaoBuscarMusicas.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
         botaoBuscarMusicas.setText("Buscar Músicas");
         botaoBuscarMusicas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,24 +46,32 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
             }
         });
 
-        botaoSuasPlaylists.setBackground(new java.awt.Color(29, 185, 84));
-        botaoSuasPlaylists.setText("Suas Playlists");
-        botaoSuasPlaylists.addActionListener(new java.awt.event.ActionListener() {
+        botaoLogout.setBackground(new java.awt.Color(29, 185, 84));
+        botaoLogout.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        botaoLogout.setText("Logout");
+        botaoLogout.setMaximumSize(new java.awt.Dimension(111, 23));
+        botaoLogout.setMinimumSize(new java.awt.Dimension(111, 23));
+        botaoLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoSuasPlaylistsActionPerformed(evt);
-            }
-        });
-
-        botaoHistorico.setBackground(new java.awt.Color(29, 185, 84));
-        botaoHistorico.setText("Histórico");
-        botaoHistorico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoHistoricoActionPerformed(evt);
+                botaoLogoutActionPerformed(evt);
             }
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/By Yasmin Barros (3) (2).png"))); // NOI18N
         jLabel1.setText("jLabel1");
+
+        botaoHistorico1.setBackground(new java.awt.Color(29, 185, 84));
+        botaoHistorico1.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        botaoHistorico1.setText("Histórico");
+        botaoHistorico1.setMaximumSize(new java.awt.Dimension(111, 23));
+        botaoHistorico1.setMinimumSize(new java.awt.Dimension(111, 23));
+        botaoHistorico1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoHistorico1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit (3).png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,30 +79,33 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(botaoBuscarMusicas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoSuasPlaylists)
-                .addGap(42, 42, 42))
+                .addComponent(botaoBuscarMusicas, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(botaoHistorico1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(botaoHistorico)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(157, 157, 157))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoBuscarMusicas)
-                    .addComponent(botaoSuasPlaylists))
-                .addGap(86, 86, 86)
-                .addComponent(botaoHistorico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                    .addComponent(botaoBuscarMusicas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoHistorico1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -103,14 +116,14 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
         new BuscarMusicasGUI().setVisible(true);
     }//GEN-LAST:event_botaoBuscarMusicasActionPerformed
 
-    private void botaoSuasPlaylistsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSuasPlaylistsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoSuasPlaylistsActionPerformed
+    private void botaoLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLogoutActionPerformed
+        new LoginGUI().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoLogoutActionPerformed
 
-    private void botaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistoricoActionPerformed
+    private void botaoHistorico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHistorico1ActionPerformed
         new HistoricoGUI().setVisible(true);
-        //this.dispose();
-    }//GEN-LAST:event_botaoHistoricoActionPerformed
+    }//GEN-LAST:event_botaoHistorico1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,8 +163,9 @@ public class PaginaInicialGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoBuscarMusicas;
-    private javax.swing.JButton botaoHistorico;
-    private javax.swing.JButton botaoSuasPlaylists;
+    private javax.swing.JButton botaoHistorico1;
+    private javax.swing.JButton botaoLogout;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
