@@ -25,13 +25,39 @@ public class HistoricoGUI extends javax.swing.JFrame {
     public HistoricoGUI() {
         initComponents();
         getContentPane().setBackground(new Color(12,12,12)); 
+        jTabbedPane1.setForeground(Color.GREEN); // Cor de fundo dos botões de aba
+
         
         jTabbedPane1.addChangeListener(e -> {
         int index = jTabbedPane1.getSelectedIndex();
-        if (index == 0) { // Aba 0 = Histórico
+        if (index == 1) { // Aba 1 = Histórico
             try {
                 ControllerHistorico controller = new ControllerHistorico(this);
                 controller.carregarHistorico();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    });
+        
+        jTabbedPane1.addChangeListener(e -> {
+        int index = jTabbedPane1.getSelectedIndex();
+        if (index == 2) { // Aba2 = Curtidas
+            try {
+                ControllerHistorico controller = new ControllerHistorico(this);
+                controller.carregarCurtidas();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    });
+        
+        jTabbedPane1.addChangeListener(e -> {
+        int index = jTabbedPane1.getSelectedIndex();
+        if (index == 3) { // Aba 3 = Descirrtodas
+            try {
+                ControllerHistorico controller = new ControllerHistorico(this);
+                controller.carregarDescurtidas();
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -49,14 +75,25 @@ public class HistoricoGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTextArea1 = new javax.swing.JTextArea();
         tabHistorico = new javax.swing.JScrollPane();
         tabelaResultadoHistorico = new javax.swing.JTable();
         tabCurtidas = new javax.swing.JScrollPane();
         tabelaResultadoCurtidas = new javax.swing.JTable();
         tabDescurtidas = new javax.swing.JScrollPane();
         tabelaResultadoDescurtidas = new javax.swing.JTable();
+        botaoVoltar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTabbedPane1.setBackground(new java.awt.Color(29, 185, 84));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Seja bem-vindo(a) so seu histórico! Aqui você encontrará:\n\n- Histórico de buscas;\n- Lista das músicas que você curtiu;\n- Lista das músicas que você descurtiu.\n");
+        jTabbedPane1.addTab("Início", jTextArea1);
 
         tabelaResultadoHistorico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,7 +103,7 @@ public class HistoricoGUI extends javax.swing.JFrame {
                 {null}
             },
             new String [] {
-                "Título"
+                "Buscas recentes"
             }
         ) {
             Class[] types = new Class [] {
@@ -101,6 +138,11 @@ public class HistoricoGUI extends javax.swing.JFrame {
             }
         });
         tabCurtidas.setViewportView(tabelaResultadoCurtidas);
+        if (tabelaResultadoCurtidas.getColumnModel().getColumnCount() > 0) {
+            tabelaResultadoCurtidas.getColumnModel().getColumn(3).setMinWidth(0);
+            tabelaResultadoCurtidas.getColumnModel().getColumn(3).setPreferredWidth(0);
+            tabelaResultadoCurtidas.getColumnModel().getColumn(3).setMaxWidth(0);
+        }
 
         jTabbedPane1.addTab("Curtidas", tabCurtidas);
 
@@ -124,28 +166,58 @@ public class HistoricoGUI extends javax.swing.JFrame {
             }
         });
         tabDescurtidas.setViewportView(tabelaResultadoDescurtidas);
+        if (tabelaResultadoDescurtidas.getColumnModel().getColumnCount() > 0) {
+            tabelaResultadoDescurtidas.getColumnModel().getColumn(3).setMinWidth(0);
+            tabelaResultadoDescurtidas.getColumnModel().getColumn(3).setPreferredWidth(0);
+            tabelaResultadoDescurtidas.getColumnModel().getColumn(3).setMaxWidth(0);
+        }
 
         jTabbedPane1.addTab("Descurtidas", tabDescurtidas);
+
+        botaoVoltar.setText("Voltar");
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/By Yasmin Barros (3) (2).png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botaoVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel1)))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addContainerGap()
+                .addComponent(botaoVoltar)
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addComponent(jLabel1))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+        new PaginaInicialGUI().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoVoltarActionPerformed
 
     public JTabbedPane getjTabbedPane1() {
         return jTabbedPane1;
@@ -248,7 +320,10 @@ public class HistoricoGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoVoltar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane tabCurtidas;
     private javax.swing.JScrollPane tabDescurtidas;
     private javax.swing.JScrollPane tabHistorico;
